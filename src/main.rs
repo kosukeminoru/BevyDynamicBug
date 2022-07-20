@@ -4,7 +4,7 @@ use libloading::{Library, Symbol};
 fn main() {
     let mut app = App::new();
     unsafe {
-        app.load_plugin("src/lib/src/lib.rs");
+        app.load_plugin("src/lib/target/debug/libbevylib.dylib");
     }
     app.run();
 }
