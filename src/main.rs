@@ -1,12 +1,22 @@
-use bevy_app::prelude::*;
-use bevy_app::CreatePlugin;
+use bevy::app::CreatePlugin;
+use bevy::prelude::*;
 use libloading::{Library, Symbol};
+use std::time::Duration;
 fn main() {
     let mut app = App::new();
+    app.add_plugins(bevy::MinimalPlugins);
+
+    app.add_system(system2);
+    app.insert_resource(bevy::app::ScheduleRunnerSettings::run_loop(
+        Duration::from_secs(0),
+    ));
     unsafe {
         app.load_plugin("src/lib/target/debug/libbevylib.dylib");
     }
     app.run();
+}
+fn system2() {
+    println!("hello from main app!");
 }
 
 pub unsafe fn dynamically_load_plugin(path: &str) -> (Library, Box<dyn Plugin>) {

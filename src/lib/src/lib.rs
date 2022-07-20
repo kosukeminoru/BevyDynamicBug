@@ -8,7 +8,7 @@ impl Plugin for MyApp {
         for stage in app.schedule.iter_stages() {
             println!("{:?}", stage.0);
         }
-        app.add_system(system);
+        app.add_system_to_stage(CoreStage::PostUpdate, system);
     }
 }
 

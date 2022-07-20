@@ -9,4 +9,4 @@ crate_type = ["dylib"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-bevy = {version = "0.7.0", feature = "dynamic"}
+bevy = {version = "0.7.0"}
